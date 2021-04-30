@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello/app_controller.dart';
 
 // Widget Variável
 class HomePage extends StatefulWidget {
@@ -11,6 +12,7 @@ class HomePage extends StatefulWidget {
 // Estada do Widget Variável
 class HomePageState extends State<HomePage> {
   int counter = 0;
+  bool isDarkTheme = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +20,12 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Home Page'),
       ),
-      body: Container(
-        width: 200,
-        height: 200,
-        color: Colors.white,
-        child: Align(
-          alignment: Alignment.center,
-          child: Container(
-            width: 100,
-            height: 100,
-            color: Colors.green,
-          ),
+      body: Center(
+        child: Switch(
+          value: AppController.instance.isDarkTheme,
+          onChanged: (value) {
+            AppController.instance.changeTheme();
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
