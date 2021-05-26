@@ -130,7 +130,7 @@ class _FirebaseForm extends State<FirebaseForm> {
                   );
 
                   if (createUser != null)
-                    print(createUser);
+                    AppController.instance.changeSuccessRegister();
                   else
                     AppController.instance
                         .changeLoginMessageError('Register Failed.');
@@ -156,6 +156,18 @@ class _FirebaseForm extends State<FirebaseForm> {
             style: TextStyle(
               color: Colors.red,
               fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+          child: Text(
+            AppController.instance.successRegister,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.green,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),

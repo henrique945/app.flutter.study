@@ -6,6 +6,7 @@ class AppController extends ChangeNotifier {
 
   bool isDarkTheme = false;
   String loginErrorMessage = '';
+  String successRegister = '';
 
   changeTheme() {
     isDarkTheme = !isDarkTheme;
@@ -14,6 +15,11 @@ class AppController extends ChangeNotifier {
 
   changeLoginMessageError(String newMessage) {
     loginErrorMessage = newMessage;
+    notifyListeners();
+  }
+
+  changeSuccessRegister() {
+    successRegister = 'User successfully created.';
     notifyListeners();
   }
 }
