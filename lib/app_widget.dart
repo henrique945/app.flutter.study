@@ -19,6 +19,7 @@ class AppWidget extends StatelessWidget {
               brightness: Brightness.dark,
               buttonTheme: ButtonThemeData(
                 buttonColor: Colors.deepPurple,
+                focusColor: Colors.deepPurple,
               )),
           themeMode: ThemeMode.dark,
           home: LoginPage(),
