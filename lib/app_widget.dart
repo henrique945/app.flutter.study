@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello/app_controller.dart';
 
-import 'home_page.dart';
+import 'login_page.dart';
 
 // Widget Imutavel
 class AppWidget extends StatelessWidget {
@@ -16,9 +16,12 @@ class AppWidget extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           theme: ThemeData(
-            brightness: Brightness.dark,
-          ),
-          home: HomePage(),
+              brightness: Brightness.dark,
+              buttonTheme: ButtonThemeData(
+                buttonColor: Colors.deepPurple,
+              )),
+          themeMode: ThemeMode.dark,
+          home: LoginPage(),
         );
       },
     );
