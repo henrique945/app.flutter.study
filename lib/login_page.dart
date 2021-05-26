@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hello/app_controller.dart';
+import 'package:hello/home_page.dart';
 
 // Widget Variável
 class LoginPage extends StatefulWidget {
@@ -95,8 +96,13 @@ class _FirebaseForm extends State<FirebaseForm> {
                 try {
                   var authUser = await auth.signInWithEmailAndPassword(
                       email: email, password: password);
+
                   if (authUser != null)
-                    print(authUser);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ));
                   else
                     AppController.instance
                         .changeLoginMessageError('Login Failed');
