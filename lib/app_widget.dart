@@ -16,9 +16,7 @@ class AppWidget extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           theme: ThemeData(
-            brightness: AppController.instance.isDarkTheme
-                ? Brightness.dark
-                : Brightness.light,
+            brightness: Brightness.dark,
           ),
           home: HomePage(),
         );
