@@ -16,19 +16,20 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Home News"),
-          leading: new IconButton(
-            icon: new Icon(Icons.logout),
-            onPressed: (() => Navigator.of(context).pop()),
-          ),
+      appBar: AppBar(
+        title: Text("Home News"),
+        leading: new IconButton(
+          icon: new Icon(Icons.logout),
+          onPressed: (() => Navigator.of(context).pop()),
         ),
-        body: Column(
-          children: [
-            myForm(),
-            myList(),
-          ],
-        ));
+      ),
+      body: Column(
+        children: [
+          myForm(),
+          myList(),
+        ],
+      ),
+    );
   }
 
   Widget myForm() {

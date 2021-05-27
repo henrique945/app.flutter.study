@@ -45,8 +45,8 @@ class _FirebaseForm extends State<FirebaseForm> {
         Container(
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 60),
           child: Title(
-            title: 'Hacker News',
-            child: Text('Hacker News',
+            title: 'Hackers News',
+            child: Text('Hackers News',
                 style: TextStyle(
                   color: Colors.deepPurple,
                   fontSize: 40,
