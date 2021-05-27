@@ -45,8 +45,8 @@ class _FirebaseForm extends State<FirebaseForm> {
         Container(
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 60),
           child: Title(
-            title: 'Hackers News',
-            child: Text('Hackers News',
+            title: 'Hacker News',
+            child: Text('Hacker News',
                 style: TextStyle(
                   color: Colors.deepPurple,
                   fontSize: 40,
@@ -102,7 +102,7 @@ class _FirebaseForm extends State<FirebaseForm> {
                   "Login",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
                 onPressed: (AnimationController controller) async {
@@ -143,7 +143,7 @@ class _FirebaseForm extends State<FirebaseForm> {
                   "Sign-Up",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
                 onPressed: (AnimationController controller) async {
