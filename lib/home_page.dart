@@ -102,7 +102,7 @@ class _HomePage extends State<HomePage> {
               FirebaseFirestore.instance.collection("collection").snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) return new Text("No documents");
+            if (!snapshot.hasData) return new Text("No recent news");
             return new ListView(children: getListItems(snapshot));
           }),
     );
