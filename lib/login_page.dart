@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hello/app_controller.dart';
 import 'package:hello/home_page.dart';
+import 'package:progress_indicator_button/progress_button.dart';
 
 // Widget Variável
 class LoginPage extends StatefulWidget {
@@ -90,61 +91,83 @@ class _FirebaseForm extends State<FirebaseForm> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
-              child: Text("Login"),
-              onPressed: () async {
-                try {
-                  var authUser = await auth.signInWithEmailAndPassword(
-                      email: email, password: password);
-
-                  if (authUser != null)
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ));
-                  else
-                    AppController.instance
-                        .changeLoginMessageError('Login Failed');
-                } on FirebaseAuthException catch (e) {
-                  print(e);
-
-                  AppController.instance.changeLoginMessageError(e.message);
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple,
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                  textStyle: TextStyle(
-                    color: Colors.black,
+            Container(
+              width: 100,
+              height: 50,
+              child: ProgressButton(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                color: Colors.deepPurple,
+                strokeWidth: 2,
+                child: Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.white,
                     fontSize: 20,
-                  )),
-            ),
-            ElevatedButton(
-              child: Text("Sign-Up"),
-              onPressed: () async {
-                try {
-                  var createUser = await auth.createUserWithEmailAndPassword(
-                    email: email,
-                    password: password,
-                  );
+                  ),
+                ),
+                onPressed: (AnimationController controller) async {
+                  controller.forward();
+                  try {
+                    var authUser = await auth.signInWithEmailAndPassword(
+                        email: email, password: password);
 
-                  if (createUser != null)
-                    AppController.instance.changeSuccessRegister();
-                  else
+                    if (authUser != null) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ));
+                      controller.reset();
+                    } else {
+                      controller.reset();
+                      AppController.instance
+                          .changeLoginMessageError('Login Failed');
+                    }
+                  } on FirebaseAuthException catch (e) {
+                    print(e);
+                    controller.reset();
+
+                    AppController.instance.changeLoginMessageError(e.message);
+                  }
+                },
+              ),
+            ),
+            Container(
+              width: 100,
+              height: 50,
+              child: ProgressButton(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                color: Colors.deepPurple,
+                strokeWidth: 2,
+                child: Text(
+                  "Sign-Up",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+                onPressed: (AnimationController controller) async {
+                  controller.forward();
+                  try {
+                    var createUser = await auth.createUserWithEmailAndPassword(
+                      email: email,
+                      password: password,
+                    );
+
+                    if (createUser != null)
+                      AppController.instance.changeSuccessRegister();
+                    else
+                      AppController.instance
+                          .changeLoginMessageError('Register Failed.');
+
+                    controller.reset();
+                  } catch (e) {
+                    controller.reset();
                     AppController.instance
                         .changeLoginMessageError('Register Failed.');
-                } catch (e) {
-                  AppController.instance.changeLoginMessageError(e);
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple,
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  )),
+                  }
+                },
+              ),
             ),
           ],
         ),
