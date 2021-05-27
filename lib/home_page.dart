@@ -18,6 +18,10 @@ class _HomePage extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Home News"),
+          leading: new IconButton(
+            icon: new Icon(Icons.logout),
+            onPressed: (() => Navigator.of(context).pop()),
+          ),
         ),
         body: Column(
           children: [
